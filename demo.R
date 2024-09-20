@@ -65,7 +65,6 @@ GetGP <- function(group,groupW,n){
   list(G=G,P=P,Z=Z,W=W)
 }
 GP <- GetGP(dc$group,dc$groupW,n=nrow(dc))
-source("L3Ofn.R")
 # Run the functions as before
 LMnum <- dc$e %*% GP$G %*% dc$X
 LMVar <- L3Ovar_iloop_cov(dc$X,dc$e,GP$P,GP$G) #L3O variance
