@@ -8,7 +8,7 @@ Authors@R: c(
            comment = "Package implementation and documentation"),
     person(given = "Luther", family = "Yap",
            email = "lyap@nus.edu.sg",
-           role = "aut",
+           role = c("aut", "cre"),
            comment = "Original method and code implementation"),
     person(given = "Xiang Ting", family = "Ng",
            email = "ngxiangting@u.nus.edu",
