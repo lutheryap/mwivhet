@@ -24,8 +24,8 @@ Description: Calculate test statistics and confidence intervals in a linear
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-URL: https://github.com/minhnngo/mwivhet
-BugReports: https://github.com/minhnngo/mwivhet/issues
+URL: https://github.com/lutheryap/mwivhet
+BugReports: https://github.com/lutheryap/mwivhet/issues
 Imports:
     stats
 Suggests:
