@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/minhnngo/mwivhet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/minhnngo/mwivhet/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/lutheryap/mwivhet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lutheryap/mwivhet/actions/workflows/R-CMD-check.yaml)
 
 <!-- badges: end -->
 
@@ -16,7 +16,7 @@ of heterogeneous treatment effects, using procedures from [Yap
 
 See the vignette `mwivhet` for a description of the package (available
 through `vignette("mwivhet")` once installed), and the [package
-website](https://minhnngo.github.io/mwivhet) for full documentation.
+website](https://lutheryap.github.io/mwivhet) for full documentation.
 
 ## Installation
 
@@ -27,7 +27,7 @@ You can install the development version from
 if (!requireNamespace("remotes")) {
   install.packages("remotes")
 }
-remotes::install_github("minhnngo/mwivhet")
+remotes::install_github("lutheryap/mwivhet")
 ```
 
 ## Citation
