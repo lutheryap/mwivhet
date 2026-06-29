@@ -4,7 +4,7 @@ Version: 0.1.0
 Authors@R: c(
     person(given = "Ngoc Minh", family = "Ngo",
            email = "minh.ngongoc2@gmail.com",
-           role = c("aut", "cre"),
+           role = c("aut"),
            comment = "Package implementation and documentation"),
     person(given = "Luther", family = "Yap",
            email = "lyap@nus.edu.sg",
