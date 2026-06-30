@@ -1,11 +1,11 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>/404.html</loc></url>
-<url><loc>/LICENSE-text.html</loc></url>
-<url><loc>/LICENSE.html</loc></url>
 <url><loc>/articles/index.html</loc></url>
 <url><loc>/articles/mwivhet.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
 <url><loc>/reference/GetCIcoef.html</loc></url>
 <url><loc>/reference/GetCIcoef_iloop.html</loc></url>
 <url><loc>/reference/GetCIcoef_iloop_nocov.html</loc></url>
@@ -13,17 +13,17 @@
 <url><loc>/reference/GetCItypebd.html</loc></url>
 <url><loc>/reference/GetCIvals.html</loc></url>
 <url><loc>/reference/GetGP.html</loc></url>
+<url><loc>/reference/Getgroupindex.html</loc></url>
 <url><loc>/reference/GetL3OCIcoef_fast.html</loc></url>
 <url><loc>/reference/GetLM.html</loc></url>
-<url><loc>/reference/GetLM_WQ.html</loc></url>
 <url><loc>/reference/GetLM_nocov.html</loc></url>
+<url><loc>/reference/GetLM_WQ.html</loc></url>
 <url><loc>/reference/GetSigMx.html</loc></url>
-<url><loc>/reference/Getgroupindex.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/L3Ovar_gloop_cov.html</loc></url>
 <url><loc>/reference/L3Ovar_gloop_nocov.html</loc></url>
 <url><loc>/reference/L3Ovar_iloop_cov.html</loc></url>
 <url><loc>/reference/L3Ovar_iloop_nocov.html</loc></url>
-<url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/mwivhet-package.html</loc></url>
 <url><loc>/reference/suffolk.html</loc></url>
 </urlset>

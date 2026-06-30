@@ -47,7 +47,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/minhnngo/mwivhet/" class="external-link">
+  <a href="https://github.com/lutheryap/mwivhet/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -69,9 +69,9 @@
 Heterogeneity</h1>
                         <h4 data-toc-skip class="author">Luther Yap</h4>
             
-            <h4 data-toc-skip class="date">June 17, 2026</h4>
+            <h4 data-toc-skip class="date">June 30, 2026</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/minhnngo/mwivhet/blob/HEAD/vignettes/mwivhet.Rmd" class="external-link"><code>vignettes/mwivhet.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/lutheryap/mwivhet/blob/HEAD/vignettes/mwivhet.Rmd" class="external-link"><code>vignettes/mwivhet.Rmd</code></a></small>
       <div class="hidden name"><code>mwivhet.Rmd</code></div>
 
     </div>
@@ -84,9 +84,9 @@ Heterogeneity</h1>
 <p>The package <code>mwivhet</code> implements a procedure for valid
 inference for the many instrumental variable (IV) model with many weak
 instruments and heterogeneous treatment effects, based on <span class="citation">Yap (2026)</span>. A leading application of this
-setting is the examiner design, where judge or caseworker indicators
-serve as instruments. In this setting, the number of instruments can be
-large relative to the sample size.</p>
+setting is the examiner design, where judge or caseworker indicators are
+instruments. In this setting, the number of instruments can be large
+relative to the sample size.</p>
 <p>Existing inference procedures, such as those of Mikusheva and Sun
 (2022) and Matsushita and Otsu (2022), are robust to many weak
 instruments but assume homogeneity in treatment effects. <span class="citation">Yap (2026)</span> shows that these procedures need not
@@ -97,17 +97,16 @@ uniformly most powerful unbiased under both many weak instruments and
 heterogeneous treatment effects.</p>
 <p>The point estimator is the unbiased jackknife IV estimator (UJIVE) of
 <span class="citation">Kolesár (2013)</span>, which removes
-own-observation dependence by applying the leave-one-out construction to
-the entire first stage, so that both the instrument coefficients and the
-covariate adjustment are estimated excluding observation
+own-observation dependence by applying the leave-one-out construction so
+that both the instrument coefficients and the covariate adjustment are
+estimated excluding observation
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
 and the fitted value is constructed entirely from other observations.
 Under the monotonicity condition of <span class="citation">Imbens and
 Angrist (1994)</span>, UJIVE can be interpreted as a weighted average of
 causal effects for individuals whose treatment is affected by the
-instrument. When monotonicity fails, the estimand remains well-defined
-but no longer corresponds to a convex average of causal effects. The
-confidence interval is obtained by inverting the Lagrange Multiplier
+instrument. When monotonicity fails, the estimand remains well-defined.
+The confidence interval is obtained by inverting the Lagrange Multiplier
 (LM) test, where the test statistic uses a novel leave-three-out (L3O)
 variance estimator that is consistent even when reduced-form
 coefficients are not consistently estimable.</p>
@@ -117,11 +116,11 @@ coefficients are not consistently estimable.</p>
 </h2>
 <p>We demonstrate the package using the <code>suffolk</code> dataset,
 which contains administrative records from the Suffolk County District
-Attorney’s Office. The dataset is drawn from <span class="citation">Agan
-et al. (2023)</span>, who study the effect of misdemeanor prosecution on
-recidivism, which is measured by criminal complaint in two years.
-Following <span class="citation">Agan et al. (2023)</span>, the paper
-frames prosecution as the treatment; here the treatment variable
+Attorney’s Office. The dataset is obtained from <span class="citation">Agan, Doleac, and Harvey (2023)</span>, who study the
+effect of misdemeanor prosecution on recidivism, which is measured by
+criminal complaint in two years. Following <span class="citation">Agan,
+Doleac, and Harvey (2023)</span>, the paper frames prosecution as the
+treatment; here the treatment variable
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mi>i</mi></msub><annotation encoding="application/x-tex">X_i</annotation></semantics></math>
 is coded as an indicator for immediate non-prosecution
 (<code>ng_immed_all</code>), the complement, and the outcome
@@ -137,7 +136,7 @@ combinations.</p>
 <h3 id="data-preparation">Data Preparation<a class="anchor" aria-label="anchor" href="#data-preparation"></a>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/minhnngo/mwivhet" class="external-link">mwivhet</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lutheryap/mwivhet" class="external-link">mwivhet</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lrberge.github.io/fixest/" class="external-link">fixest</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -191,18 +190,18 @@ for two input variables
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
-The ratio of the numerator
+The ratio of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>i</mi></msub><msub><mo>∑</mo><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></msub><msub><mi>G</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>X</mi><mi>i</mi></msub><msub><mi>Y</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\sum_{i}\sum_{j\neq i}G_{ij}X_iY_j</annotation></semantics></math>
-to the first-stage term
+to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>i</mi></msub><msub><mo>∑</mo><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></msub><msub><mi>G</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>X</mi><mi>i</mi></msub><msub><mi>X</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\sum_i\sum_{j\neq i}G_{ij}X_iX_j</annotation></semantics></math>
 gives
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>β</mi><mo accent="true">̂</mo></mover><mrow><mi mathvariant="normal">U</mi><mi mathvariant="normal">J</mi><mi mathvariant="normal">I</mi><mi mathvariant="normal">V</mi><mi mathvariant="normal">E</mi></mrow></msub><annotation encoding="application/x-tex">\hat\beta_{\mathrm{UJIVE}}</annotation></semantics></math>.</p>
 <p>The confidence interval is obtained by inverting the LM test (with
 L3O variance estimator) via <code>GetCIcoef</code> and
 <code>GetCItypebd</code>. The test rejects if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><msubsup><mi>T</mi><mrow><mi>L</mi><mi>M</mi></mrow><mn>2</mn></msubsup><mi>/</mi><msub><mover><mi>V</mi><mo accent="true">̂</mo></mover><mrow><mi>L</mi><mi>M</mi></mrow></msub><mo>≥</mo><msup><mi mathvariant="normal">Φ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mi>/</mi><mn>2</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">KT_{LM}^2/\hat{V}_{LM} \geq \Phi^{-1}(1-\alpha/2)^2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><msubsup><mi>T</mi><mrow><mi>L</mi><mi>M</mi></mrow><mn>2</mn></msubsup><mi>/</mi><msub><mover><mi>V</mi><mo accent="true">̂</mo></mover><mrow><mi>L</mi><mi>M</mi></mrow></msub><mo>≥</mo><msup><mi>Φ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mi>/</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">KT_{LM}^2/\hat{V}_{LM} \geq \Phi^{-1}(1-\alpha/2)^2</annotation></semantics></math>,
 where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Φ</mi><mo stretchy="false" form="prefix">(</mo><mi>⋅</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Phi(\cdot)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>⋅</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Phi(\cdot)</annotation></semantics></math>
 is the standard normal CDF. Since
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>T</mi><mrow><mi>L</mi><mi>M</mi></mrow><mn>2</mn></msubsup><annotation encoding="application/x-tex">T_{LM}^2</annotation></semantics></math>
 and
@@ -211,7 +210,7 @@ are both quadratic in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\beta_0</annotation></semantics></math>,
 the confidence set is obtained by solving a quadratic inequality.
 <code>GetCIcoef</code> returns the coefficients
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>C</mi><mn>0</mn></msub><mo>,</mo><msub><mi>C</mi><mn>1</mn></msub><mo>,</mo><msub><mi>C</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(C_0, C_1, C_2)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>C</mi><mn>0</mn></msub><mo>,</mo><msub><mi>C</mi><mn>1</mn></msub><mo>,</mo><msub><mi>C</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(C_0, C_1, C_2)</annotation></semantics></math>
 of this quadratic, and <code>GetCItypebd</code> solves the inequality
 and returns the confidence interval type and bounds.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -255,20 +254,18 @@ and returns the confidence interval type and bounds.</p>
 <span><span class="co">#&gt; CIlength  0.155</span></span></code></pre></div>
 <p>The UJIVE estimate of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>0.144</mn></mrow><annotation encoding="application/x-tex">-0.144</annotation></semantics></math>
-suggests that non-prosecution reduces the probability of criminal
-complaint within two years by about 14 percentage points. The L3O 95%
-confidence interval
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mn>0.222</mn><mo>,</mo><mi>−</mi><mn>0.066</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[-0.222, -0.066]</annotation></semantics></math>
-excludes zero, providing evidence that prosecution increases recidivism.
-These results replicate the findings in <span class="citation">Agan et
-al. (2023)</span> using a procedure that is robust to many weak
-instruments and heterogeneous treatment effects.</p>
+shows how non-prosecution reduces the probability of criminal complaint
+within two years by about 14 percentage points. The L3O 95% confidence
+interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><mn>0.222</mn><mo>,</mo><mi>−</mi><mn>0.066</mn><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[-0.222, -0.066]</annotation></semantics></math>
+excludes zero. These results show that the findings in <span class="citation">Agan, Doleac, and Harvey (2023)</span> are robust to
+many weak instruments and heterogeneous treatment effects.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-agan23" class="csl-entry">
 Agan, Amanda, Jennifer L. Doleac, and Anna Harvey. 2023.
 <span>“Misdemeanor Prosecution.”</span> <em>The Quarterly Journal of
@@ -280,13 +277,13 @@ Estimation of Local Average Treatment Effects.”</span>
 <em>Econometrica</em> 62.
 </div>
 <div id="ref-kol13" class="csl-entry">
-Kolesár, Michal. 2013. <em>Estimation in an Instrumental Variables Model
-with Treatment Effect Heterogeneity</em>. Working Papers Nos. 2013-2.
-Princeton University, Economics Department.
+Kolesár, Michal. 2013. <span>“Estimation in an Instrumental Variables
+Model with Treatment Effect Heterogeneity.”</span> Working Papers
+2013-2. Princeton University, Economics Department.
 </div>
 <div id="ref-yap25" class="csl-entry">
 Yap, Luther. 2026. <span>“Inference with Many Weak Instruments and
-Heterogeneity.”</span> Unpublished manuscript.
+Heterogeneity.”</span>
 </div>
 </div>
 </div>
