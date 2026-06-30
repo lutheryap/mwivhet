@@ -1,12 +1,8 @@
 ---
 output:
-  pdf_document:
-    latex_engine: pdflatex
-    citation_package: natbib
+  rmarkdown::html_vignette:
     toc: true
     toc_depth: 2
-    keep_tex: true
-    number_sections: true
 title: "Inference with Many Weak Instruments and Heterogeneity"
 author: "Luther Yap"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
@@ -33,7 +29,7 @@ knitr::opts_chunk$set(tidy = TRUE, collapse = TRUE, comment = "#>",
 The package `mwivhet` implements a procedure for valid inference for the many
 instrumental variable (IV) model with many weak instruments and heterogeneous
 treatment effects, based on @yap25. A leading application of this setting is
-the examiner design, where judge or caseworker indicators serve as instruments.
+the examiner design, where judge or caseworker indicators are instruments.
 In this setting, the number of instruments can be large relative to the sample
 size.
 
@@ -48,13 +44,12 @@ and heterogeneous treatment effects.
 
 The point estimator is the unbiased jackknife IV estimator (UJIVE) of
 @kol13, which removes own-observation dependence by applying the leave-one-out
-construction to the entire first stage, so that both the instrument coefficients
+construction so that both the instrument coefficients
 and the covariate adjustment are estimated excluding observation $i$ and the
 fitted value is constructed entirely from other observations. Under the
 monotonicity condition of @ia94, UJIVE can be interpreted as a weighted average
 of causal effects for individuals whose treatment is affected by the instrument.
-When monotonicity fails, the estimand remains well-defined but no longer
-corresponds to a convex average of causal effects. The confidence interval is
+When monotonicity fails, the estimand remains well-defined. The confidence interval is
 obtained by inverting the Lagrange Multiplier (LM) test, where the test
 statistic uses a novel leave-three-out (L3O) variance estimator that is
 consistent even when reduced-form coefficients are not consistently estimable.
@@ -63,7 +58,7 @@ consistent even when reduced-form coefficients are not consistently estimable.
 
 We demonstrate the package using the `suffolk` dataset, which contains
 administrative records from the Suffolk County District Attorney's Office.
-The dataset is drawn from @agan23, who study the effect of misdemeanor
+The dataset is obtained from @agan23, who study the effect of misdemeanor
 prosecution on recidivism, which is measured by criminal complaint in two years.
 Following @agan23, the paper frames prosecution as the treatment; 
 here the treatment variable $X_i$ is coded as an indicator for
@@ -126,8 +121,8 @@ df$MY <- lmY$residuals
 
 The UJIVE point estimate is computed via `GetLM`, which computes the weighted
 cross-product $\sum_i\sum_{j\neq i} G_{ij} A_i B_j$ for two input variables
-$A$ and $B$. The ratio of the numerator $\sum_{i}\sum_{j\neq i}G_{ij}X_iY_j$
-to the first-stage term $\sum_i\sum_{j\neq i}G_{ij}X_iX_j$ gives $\hat\beta_{\mathrm{UJIVE}}$.
+$A$ and $B$. The ratio of $\sum_{i}\sum_{j\neq i}G_{ij}X_iY_j$
+to $\sum_i\sum_{j\neq i}G_{ij}X_iX_j$ gives $\hat\beta_{\mathrm{UJIVE}}$.
 
 The confidence interval is obtained by inverting the LM test (with L3O variance
 estimator) via `GetCIcoef` and `GetCItypebd`. The test rejects if
@@ -172,11 +167,10 @@ CItab_L3O_round <- round(L3O_data, 3)
 CItab_L3O_round
 ```
 
-The UJIVE estimate of $-0.144$ suggests that non-prosecution reduces the
+The UJIVE estimate of $-0.144$ shows how non-prosecution reduces the
 probability of criminal complaint within two years by about 14 percentage points. The
-L3O 95\% confidence interval $[-0.222, -0.066]$ excludes zero, providing
-evidence that prosecution increases recidivism. These results replicate the
-findings in @agan23 using a procedure that is robust to many weak instruments
+L3O 95\% confidence interval $[-0.222, -0.066]$ excludes zero. These results show that the
+findings in @agan23 are robust to many weak instruments
 and heterogeneous treatment effects.
 
 # References
